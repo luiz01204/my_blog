@@ -1,0 +1,48 @@
+<%- include("../../partials/header.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+
+<div class="container mb-3">
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2>Novo artigo:</h2>
+        </div>
+        <div class="card-body">
+            <form action="/admin/articles/save" method="POST">
+                <div class="mb-3">
+                    <label for="" class="form-label">Titulo do artigo</label>
+                    <input type="text" class="form-control", name="title">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Categoria</label>
+                    <select name="category" class="form-control">
+                        <% categories.forEach((category) => { %>
+                            <option value="<%= category.id %>"><%= category.title %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control", name="body" id="article"></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <button class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include("../../partials/footer.ejs") %>
+
+<script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: "#article",
+        plugins: "link autolink wordcount autosave print image list media preview emoticons",
+        toolbar: "undo redo | bold italic underline | link image media emoticons | preview | numlist bullist | wordcount",
+        language: "pt_BR",
+        height: 300
+    });
+</script>               

@@ -1,0 +1,42 @@
+<%- include("./partials/header.ejs") %>
+<%- include("./partials/homeNavBar.ejs") %>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>Bem-vindo!</h2>
+            </div>
+            <div class="card-body bg-light p-4 rounded">
+                <p class="lead">
+                    Este é um blog simples de programação, criado para praticar o uso de tecnologias como 
+                    <strong> Bootstrap, Node.js, EJS, Express, Express session Body Parser, Slugify, Bcrypt e Sequelize</strong> com MySQL.  
+                    <br><br>
+                    O projeto segue a <strong>arquitetura MVC</strong> para garantir uma estrutura organizada e modular. 
+                    Além disso, utilizamos inteligência artificial para a geração dos artigos.  
+                    <br><br>
+                    Este blog tem fins exclusivamente educacionais, servindo como estudo de caso. 
+                    Nenhuma informação aqui deve ser considerada como verdade absoluta.  
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4 mb-4">
+      
+        <% articles.forEach((article) => { %>
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h2><%= article.title %></h2>
+                </div>
+                <div class="card-body bg-light p-4 rounded">
+                    <a href="/<%= article.slug %>" class="btn btn-success">Ler Artigo</a>
+                </div>
+            </div>
+        <% }); %>
+        
+        <div class="mt-3 d-flex justify-content-end">
+            <a class="btn btn-primary mt-3" href="/pages/2">Next >>></a>
+        </div>
+    </div>
+    
+    <%- include("./partials/footer.ejs") %>
